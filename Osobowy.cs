@@ -13,7 +13,7 @@ namespace TransPolWpf
 
         public static void Zapisz(string marka, string model, string rok_produkcji)
         {
-            File.AppendAllText(Sciezka, "marka: "+ marka +"; model "+ model +"; rok produkcji "+ rok_produkcji + System.Environment.NewLine);
+            File.AppendAllText(Sciezka, "marka: " + marka + "; \nmodel " + model + "; \nrok produkcji " + rok_produkcji + "\n " + System.Environment.NewLine);
         }
     }
 }
