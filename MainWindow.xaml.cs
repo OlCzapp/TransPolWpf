@@ -20,5 +20,10 @@ namespace TransPolWpf
         {
             InitializeComponent();
         }
+
+        private void dodaj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
