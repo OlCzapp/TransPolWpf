@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,47 +27,51 @@ namespace TransPolWpf
 
         void WczytajPojazdy()
         {
-            string sciezka = "lista_pojazdow.txt";
+            string sciezka_osobowy = "Osobowy.txt";
+            string sciezka_ciezarowe = "Ciezarowy.txt";
+            string sciezka_motocykl = "Motocykl.txt";
 
-            if (File.Exists(sciezka))
+            if (File.Exists(sciezka_osobowy)&& File.Exists(sciezka_ciezarowe)&& File.Exists(sciezka_motocykl))
             {
-                wyswietlany_text.Text = File.ReadAllText(sciezka, Encoding.UTF8); //wyswietlany_text - textblock po prawej stronie, w którym wyświetlamy dane z pliku
+                for (int i = 0; i < sciezka_osobowy.Length; i++)
+                {
+                    wyswietlany_text.Text = File.ReadAllText(sciezka_osobowy, Encoding.UTF8);
+
+                }
+                for (int j = 0; j < sciezka_ciezarowe.Length; j++)
+                {
+                    wyswietlany_text.Text = File.ReadAllText(sciezka_ciezarowe, Encoding.UTF8);
+                }
+                for (int k = 0; k < sciezka_motocykl.Length; k++)
+                {
+                    wyswietlany_text.Text = File.ReadAllText(sciezka_motocykl, Encoding.UTF8);
+                }
             }
-            else
-            {
-                wyswietlany_text.Text = "Brak danych.";
-            }
+            
         }
-
         private void dodaj_Click(object sender, RoutedEventArgs e)
         {
             string marka_cs = marka.Text;
             string model_cs = model.Text;
             string rok_cs = rok_produkcji.Text;
 
-            string rodzaj_cs = "";
             if (a.IsChecked == true)
             {
-                rodzaj_cs = "Osobowy";
+                Osobowy.Zapisz(marka_cs, model_cs, rok_cs);
+                wyswietlany_text.Text = "Zapisano do Osobowy.txt";
             }
             else if (b.IsChecked == true)
             {
-                rodzaj_cs = "Ciężarowy";
+                Ciezarowy.Zapisz(marka_cs, model_cs, rok_cs);
+                wyswietlany_text.Text = "Zapisano do Ciezarowy.txt";
             }
-            else
+            else if (c.IsChecked == true)
             {
-                rodzaj_cs = "Motocykl";
+                Motocykl.Zapisz(marka_cs, model_cs, rok_cs);
+                wyswietlany_text.Text = "Zapisano do Motocykl.txt";
             }
+            WczytajPojazdy();
 
-            string linia = $"Dane: \nMarka: {marka_cs}\nModel: {model_cs}\nRok produkcji: {rok_cs}\nRodzaj: {rodzaj_cs}\n...";
-
-            File.AppendAllText("lista_pojazdow.txt", linia + Environment.NewLine);
-
-            WczytajPojazdy(); //odświeżenie TextBlocka
-
-            //wyswietlany_text.Text = $"Dane: \nMarka: {marka_cs}\nModel: {model_cs}\nRok produkcji: {rok_cs}\nRodzaj: {rodzaj_cs}\n...";
-
-            //MessageBox.Show($"Dodano pojazd:\nMarka: {marka_cs}\nModel: {model_cs}\nRok produkcji: {rok_cs}\nRodzaj: {rodzaj_cs}", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
