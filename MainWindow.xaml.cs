@@ -27,27 +27,26 @@ namespace TransPolWpf
 
         void WczytajPojazdy()
         {
-            string sciezka_osobowy = "Osobowy.txt";
-            string sciezka_ciezarowe = "Ciezarowy.txt";
-            string sciezka_motocykl = "Motocykl.txt";
+            string osobowy = "Osobowy.txt";
+            string ciezarowy = "Ciezarowy.txt";
+            string motocykl = "Motocykl.txt";
 
-            if (File.Exists(sciezka_osobowy)&& File.Exists(sciezka_ciezarowe)&& File.Exists(sciezka_motocykl))
-            {
-                for (int i = 0; i < sciezka_osobowy.Length; i++)
-                {
-                    wyswietlany_text.Text = File.ReadAllText(sciezka_osobowy, Encoding.UTF8);
+            StringBuilder sb = new StringBuilder();
 
-                }
-                for (int j = 0; j < sciezka_ciezarowe.Length; j++)
-                {
-                    wyswietlany_text.Text = File.ReadAllText(sciezka_ciezarowe, Encoding.UTF8);
-                }
-                for (int k = 0; k < sciezka_motocykl.Length; k++)
-                {
-                    wyswietlany_text.Text = File.ReadAllText(sciezka_motocykl, Encoding.UTF8);
-                }
-            }
-            
+            if (File.Exists(osobowy))
+                sb.AppendLine("OSOBOWY:")
+                  .AppendLine(File.ReadAllText(osobowy));
+
+            if (File.Exists(ciezarowy))
+                sb.AppendLine("\nCIĘŻAROWY:")
+                  .AppendLine(File.ReadAllText(ciezarowy));
+
+            if (File.Exists(motocykl))
+                sb.AppendLine("\nMOTOCYKL:")
+                  .AppendLine(File.ReadAllText(motocykl));
+
+            wyswietlany_text.Text = sb.ToString();
+
         }
         private void dodaj_Click(object sender, RoutedEventArgs e)
         {
