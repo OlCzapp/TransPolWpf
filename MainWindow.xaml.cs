@@ -70,21 +70,19 @@ namespace TransPolWpf
 
             if (a.IsChecked == true)
             {
-                pojazd = new Osobowy(marka_cs, model_cs, rok_cs);
+                int drzwi = int.Parse(liczba_drzwi.Text);
+                pojazd = new Osobowy(marka_cs, model_cs, rok_cs, drzwi);
             }
             else if (b.IsChecked == true)
             {
-                pojazd = new Ciezarowy(marka_cs, model_cs, rok_cs);
+                pojazd = new Ciezarowy(marka_cs, model_cs, rok_cs, ladownosc.Text);
             }
             else if (c.IsChecked == true)
             {
-                pojazd = new Motocykl(marka_cs, model_cs, rok_cs);
+                int miejsca = int.Parse(liczba_miejsc.Text);
+                pojazd = new Motocykl(marka_cs, model_cs, rok_cs, miejsca);
             }
-            else
-            {
-                MessageBox.Show("Wybierz typ pojazdu!");
-                return;
-            }
+
 
             pojazd.Zapisz();
 

@@ -16,20 +16,28 @@ namespace TransPolWpf
 
         protected abstract string Sciezka { get; }
 
-        protected Pojazd(string marka, string model, string rokProdukcji)
+        protected Pojazd(string marka, string model, string rok)
         {
             Marka = marka;
             Model = model;
-            RokProdukcji = rokProdukcji;
+            RokProdukcji = rok;
+        }
+
+        protected virtual string DodatkoweDane()
+        {
+            return "";
         }
 
         public void Zapisz()
         {
             File.AppendAllText(
                 Sciezka,
-                $"marka: {Marka}\nmodel: {Model}\nrok produkcji: {RokProdukcji}\n\n"
+                $"marka: {Marka}\nmodel: {Model}\nrok produkcji: {RokProdukcji}\n" +
+                DodatkoweDane() +
+                "\n"
             );
         }
     }
+
 }
 
