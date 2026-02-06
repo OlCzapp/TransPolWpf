@@ -57,6 +57,7 @@ namespace TransPolWpf
             string model_cs = model.Text;
             string rok_cs = rok_produkcji.Text;
 
+            
             if (string.IsNullOrWhiteSpace(marka_cs) ||
                 string.IsNullOrWhiteSpace(model_cs) ||
                 string.IsNullOrWhiteSpace(rok_cs))
@@ -92,6 +93,66 @@ namespace TransPolWpf
             rok_produkcji.Clear();
 
             WczytajPojazdy();
+        }
+
+        private void a_Checked(object sender, RoutedEventArgs e)
+        {
+            if (a.IsChecked == true)
+            {
+                liczba_drzwi_lab.Visibility = Visibility.Visible;
+                liczba_drzwi.Visibility = Visibility.Visible;
+
+                ladownosc_lab.Visibility = Visibility.Collapsed;
+                ladownosc.Visibility = Visibility.Collapsed;
+
+                liczba_miejsc_lab.Visibility = Visibility.Collapsed;
+                liczba_miejsc.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                liczba_drzwi_lab.Visibility = Visibility.Collapsed;
+                liczba_drzwi.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void b_Checked(object sender, RoutedEventArgs e)
+        {
+            if (b.IsChecked == true)
+            {
+                ladownosc_lab.Visibility = Visibility.Visible;
+                ladownosc.Visibility = Visibility.Visible;
+
+                liczba_drzwi_lab.Visibility = Visibility.Collapsed;
+                liczba_drzwi.Visibility = Visibility.Collapsed;
+
+                liczba_miejsc_lab.Visibility = Visibility.Collapsed;
+                liczba_miejsc.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ladownosc_lab.Visibility = Visibility.Collapsed;
+                ladownosc.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void c_Checked(object sender, RoutedEventArgs e)
+        {
+            if (c.IsChecked == true)
+            {
+                liczba_miejsc_lab.Visibility = Visibility.Visible;
+                liczba_miejsc.Visibility = Visibility.Visible;
+
+                liczba_drzwi_lab.Visibility = Visibility.Collapsed;
+                liczba_drzwi.Visibility = Visibility.Collapsed;
+                
+                ladownosc_lab.Visibility = Visibility.Collapsed;
+                ladownosc.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                liczba_miejsc_lab.Visibility = Visibility.Collapsed;
+                liczba_miejsc.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }
