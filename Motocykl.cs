@@ -7,13 +7,14 @@ using System.IO;
 
 namespace TransPolWpf
 {
-    internal class Motocykl
+    internal class Motocykl : Pojazd
     {
-        private const string Sciezka = "Motocykl.txt";
+        protected override string Sciezka => "Motocykl.txt";
 
-        public static void Zapisz(string marka, string model, string rok_produkcji)
+        public Motocykl(string marka, string model, string rok)
+            : base(marka, model, rok)
         {
-            File.AppendAllText(Sciezka, "marka: " + marka + "; \nmodel " + model + "; \nrok produkcji " + rok_produkcji+ "\n " + System.Environment.NewLine);
         }
     }
 }
+

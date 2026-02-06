@@ -7,13 +7,14 @@ using System.IO;
 
 namespace TransPolWpf
 {
-    internal class Ciezarowy
+    internal class Ciezarowy : Pojazd
     {
-        private const string Sciezka = "Ciezarowy.txt";
+        protected override string Sciezka => "Ciezarowy.txt";
 
-        public static void Zapisz(string marka, string model, string rok_produkcji)
+        public Ciezarowy(string marka, string model, string rok)
+            : base(marka, model, rok)
         {
-            File.AppendAllText(Sciezka, "marka: " + marka + "; \nmodel " + model + "; \nrok produkcji " + rok_produkcji+ "\n " + System.Environment.NewLine);
         }
     }
 }
+

@@ -7,13 +7,13 @@ using System.IO;
 
 namespace TransPolWpf
 {
-    internal class Osobowy
+    internal class Osobowy : Pojazd
     {
-        private const string Sciezka = "Osobowy.txt";
+        protected override string Sciezka => "Osobowy.txt";
 
-        public static void Zapisz(string marka, string model, string rok_produkcji)
+        public Osobowy(string marka, string model, string rok)
+            : base(marka, model, rok)
         {
-            File.AppendAllText(Sciezka, "marka: " + marka + "; \nmodel " + model + "; \nrok produkcji " + rok_produkcji + "\n " + System.Environment.NewLine);
         }
     }
 }
